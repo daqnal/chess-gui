@@ -1,4 +1,24 @@
+* {
+    box-sizing: border-box;
+  }
+
+body {
+    margin: 20px;
+}
 
 #myBoard {
-    width: 800px;
+    margin: auto;
+    width: 45vw;
+}
+
+@media screen and (max-height: 920px) {
+    #myBoard {
+        width: 90vh;
+    }
+}
+
+@media screen and (max-height: 860px) {
+    #myBoard {
+        width: 70vh;
+    }
 }
