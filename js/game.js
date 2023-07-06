@@ -1,4 +1,6 @@
-import { Chess } from 'chess.js'
+// var board = Chessboard('myBoard', 'start')
+import { Chess } from "./chess.js"
+
 
 var board = null
 var game = new Chess()
@@ -80,7 +82,3 @@ var config = {
 board = Chessboard('myBoard', config)
 
 updateStatus()
-  
-    // $('#startBtn').on('click', board2.start)
-    // $('#clearBtn').on('click', board2.clear)
-
