@@ -3,19 +3,26 @@
 html {
     margin: 0;
     height: 100%;
+    background-color: #252525;
+    overflow: hidden;
 }
 
 body {
     margin: auto;
     height: 100%;
-    /* max-height: 100%; */
-    
 }
 
 #myBoard {
     
     width: 75%;
     max-width: 800px;
+
+    background-color: gray;
+    padding: 20px;
+    border-width: 4px;
+    border-radius: 12px;
+    border-color: gray;
+    border-style: solid;
 
 }
 #myBoard_parent {
@@ -25,21 +32,75 @@ body {
     align-items: center;
 }
 
-/* div.chessboard-63f37 {
-    size: 100%;
-}
 
-div.board-72b1 {
-    size: 100%; */
-
-/* @media screen and (max-height: 920px) {
+@media screen and (max-height: 825px) {
     #myBoard {
-        height: 90%;
+        width: 65%;
     }
 }
 
-@media screen and (max-height: 860px) {
+
+@media screen and (max-height: 660px) {
     #myBoard {
-        width: 70vh;
+        width: 55%;
     }
+}
+
+@media screen and (max-height: 550px) {
+    #myBoard {
+        width: 4%;
+    }
+}
+
+/* .button {
+    width: 100px;
+    height: 50px;
+    border-width: 4px;
+    border-radius: 12px;
+    border-color: black;
 } */
+
+
+/* CSS */
+.button {
+  align-items: center;
+  appearance: none;
+  background-color: #3EB2FD;
+  background-image: linear-gradient(1deg, #4F58FD, #149BF3 99%);
+  background-size: calc(100% + 20px) calc(100% + 20px);
+  border-radius: 100px;
+  border-width: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 1rem;
+  width: 200px;
+  height: auto;
+  justify-content: center;
+  line-height: 1.5;
+  padding: 6px 20px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .2s,background-position .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.button:active,
+.button:focus {
+  outline: none;
+}
+
+.button:hover {
+  background-position: -20px -20px;
+}
+
+.button:focus:not(:active) {
+  box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 .125em;
+}
