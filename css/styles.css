@@ -1,7 +1,18 @@
 @font-face {
     font-family: SpaceMono;
+    src: url(./../assets/SpaceMono-Regular.woff2);
+}
+
+@font-face {
+    font-family: SpaceMonoItalic;
     src: url(./../assets/SpaceMono-Italic.woff2);
 }
+
+@font-face {
+    font-family: SpaceMonoBold;
+    src: url(./../assets/SpaceMono-Bold.woff2);
+}
+
 
 html {
     margin: 0;
@@ -16,6 +27,11 @@ html {
 body {
     margin: auto;
     height: 100%;
+}
+
+p {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
 }
 
 #fen {
@@ -35,6 +51,7 @@ body {
     border-style: solid;
 
 }
+
 #myBoard_parent {
     height: 100%;
     display: flex;
@@ -59,9 +76,15 @@ body {
 
 }
 
+#timer {
+    font-family: SpaceMonoBold;
+    font-size: 5rem;
+    text-align: center;
+}
+
 .button {
   align-items: center;
-  appearance: none;
+  /* appearance: none; */
   background-color: #3EB2FD;
   background-image: linear-gradient(1deg, #4F58FD, #149BF3 99%);
   background-size: calc(100% + 20px) calc(100% + 20px);
@@ -81,7 +104,7 @@ body {
   position: relative;
   margin: 15px 10px 0px 10px;
 
-
+  font-family: SpaceMono;
   text-align: center;
   text-decoration: none;
   transition: background-color .2s,background-position .2s;
