@@ -1,10 +1,16 @@
-
+@font-face {
+    font-family: SpaceMono;
+    src: url(./../assets/SpaceMono-Italic.woff2);
+}
 
 html {
     margin: 0;
     height: 100%;
     background-color: #252525;
     overflow: hidden;
+    color: white;
+    
+    font-family: SpaceMono;
 }
 
 body {
@@ -12,16 +18,20 @@ body {
     height: 100%;
 }
 
+#fen {
+    display: none;
+}
+
 #myBoard {
-    
     width: 75%;
     max-width: 800px;
 
-    background-color: gray;
+    background-color: #3EB2FD;
+    background-image: linear-gradient(1deg, #4F58FD, #149BF3 99%);
     padding: 20px;
     border-width: 4px;
     border-radius: 12px;
-    border-color: gray;
+    border-color: #454545;
     border-style: solid;
 
 }
@@ -30,38 +40,25 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: auto;
 }
 
+#interface {
+    position: absolute;
+    margin: auto;
 
-@media screen and (max-height: 825px) {
-    #myBoard {
-        width: 65%;
-    }
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
+#button-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 
-@media screen and (max-height: 660px) {
-    #myBoard {
-        width: 55%;
-    }
 }
 
-@media screen and (max-height: 550px) {
-    #myBoard {
-        width: 4%;
-    }
-}
-
-/* .button {
-    width: 100px;
-    height: 50px;
-    border-width: 4px;
-    border-radius: 12px;
-    border-color: black;
-} */
-
-
-/* CSS */
 .button {
   align-items: center;
   appearance: none;
@@ -74,7 +71,7 @@ body {
   box-sizing: border-box;
   color: #FFFFFF;
   cursor: pointer;
-  display: inline-flex;
+  display: flex;
   font-size: 1rem;
   width: 200px;
   height: auto;
@@ -82,6 +79,9 @@ body {
   line-height: 1.5;
   padding: 6px 20px;
   position: relative;
+  margin: 15px 10px 0px 10px;
+
+
   text-align: center;
   text-decoration: none;
   transition: background-color .2s,background-position .2s;
@@ -103,4 +103,28 @@ body {
 
 .button:focus:not(:active) {
   box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 .125em;
+}
+
+
+@media screen and (max-width: 760px) {
+    #interface {
+        width: 75%;
+    }
+
+    #myBoard {
+        padding: 10px;
+    }
+}
+
+
+@media screen and (max-height: 660px) {
+    #myBoard_parent {
+        width: 55%;
+    }
+}
+
+@media screen and (max-height:620px) {
+    #myBoard_parent {
+        width: 70%;
+    }
 }

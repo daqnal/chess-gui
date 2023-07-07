@@ -21,6 +21,17 @@ function onDragStart (source, piece, position, orientation) {
   }
 }
 
+function makeRandomMove () {
+  var possibleMoves = game.moves()
+
+  // game over
+  if (possibleMoves.length === 0) return
+
+  var randomIdx = Math.floor(Math.random() * possibleMoves.length)
+  game.move(possibleMoves[randomIdx])
+  board.position(game.fen())
+}
+
 function onDrop (source, target) {
   // see if the move is legal
   var move = game.move({
@@ -32,18 +43,17 @@ function onDrop (source, target) {
   // illegal move
   if (move === null) return 'snapback'
 
+  // make random legal move for black
+  window.setTimeout(makeRandomMove, 250)
+
   updateStatus()
 
-  // MY LINE OF CODE SO PROBABLY BREAKS
-  console.log(board.fen())
-  // function saveStaticDataToFile(data) {
-  //   var blob = new Blob([data],
-  //               { type: "text/plain;charset=utf-8" });
-  //   saveAs(blob, "static.txt");
-  // saveStaticDataToFile(board.fen())
-  // }
+  // MY LINES OF CODE SO PROBABLY BREAKS
+  console.log(board.fen());
+  // fen.innerHTML = board.fen()
+  let fen = board.fen();
 
-}
+} // <--- LEAVE THIS ALONE
 
 // update the board position after the piece snap
 // for castling, en passant, pawn promotion
