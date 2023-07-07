@@ -72,10 +72,10 @@ function updateStatus () {
   // checkmate?
   if (game.in_checkmate()) {
     if (moveColor === 'Black') {
-      status = 'You win ヽ(#`Д´)ﾉ'
+      status = 'You win (#`Д´)'
     }
     else {
-      status = 'HAHA I WIN!!'
+      status = 'HAHA I WIN!! (^V^)'
     }
     header.innerHTML = status
   }
@@ -104,7 +104,7 @@ function updateStatus () {
 }
 
 var config = {
-  pieceTheme: './../assets/pieces/{piece}.png',
+  pieceTheme: './../img/chesspieces/lichess/{piece}.png',
   draggable: true,
   position: 'start',
   onDragStart: onDragStart,
