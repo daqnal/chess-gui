@@ -104,6 +104,7 @@ function updateStatus () {
 }
 
 var config = {
+  pieceTheme: './../assets/pieces/{piece}.png',
   draggable: true,
   position: 'start',
   onDragStart: onDragStart,
