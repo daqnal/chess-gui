@@ -1,7 +1,7 @@
 // var board = Chessboard('myBoard', 'start')
 import "./script.js"
 import { Chess } from "./chess.js"
-import { saveAs } from "./FileSaver.js"
+// import { saveAs } from "./FileSaver.js"
 
 
 var board = null
@@ -36,12 +36,12 @@ function onDrop (source, target) {
 
   // MY LINE OF CODE SO PROBABLY BREAKS
   console.log(board.fen())
-  function saveStaticDataToFile(data) {
-    var blob = new Blob([data],
-                { type: "text/plain;charset=utf-8" });
-    saveAs(blob, "static.txt");
-  saveStaticDataToFile(board.fen())
-}
+  // function saveStaticDataToFile(data) {
+  //   var blob = new Blob([data],
+  //               { type: "text/plain;charset=utf-8" });
+  //   saveAs(blob, "static.txt");
+  // saveStaticDataToFile(board.fen())
+  // }
 
 }
 
