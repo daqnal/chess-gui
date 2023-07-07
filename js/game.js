@@ -72,10 +72,10 @@ function updateStatus () {
   // checkmate?
   if (game.in_checkmate()) {
     if (moveColor === 'Black') {
-      status = 'HAHA I WIN '
+      status = 'You win ヽ(#`Д´)ﾉ'
     }
     else {
-      status = 'You win '
+      status = 'HAHA I WIN!!'
     }
     header.innerHTML = status
   }
