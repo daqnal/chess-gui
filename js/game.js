@@ -51,7 +51,7 @@ function onDrop (source, target) {
   // MY LINES OF CODE SO PROBABLY BREAKS
   console.log(board.fen());
   // fen.innerHTML = board.fen()
-  let fen = board.fen();
+  // let fen = board.fen();
 
 } // <--- LEAVE THIS ALONE
 
@@ -71,21 +71,30 @@ function updateStatus () {
 
   // checkmate?
   if (game.in_checkmate()) {
-    status = 'Game over, ' + moveColor + ' is in checkmate.'
+    if (moveColor === 'Black') {
+      status = 'HAHA I WIN '
+    }
+    else {
+      status = 'You win '
+    }
+    header.innerHTML = status
   }
 
   // draw?
   else if (game.in_draw()) {
     status = 'Game over, drawn position'
+    header.innerHTML = status
   }
 
   // game still on
   else {
     status = moveColor + ' to move'
+    header.innerHTML = status
 
     // check?
     if (game.in_check()) {
       status += ', ' + moveColor + ' is in check'
+      header.innerHTML = status
     }
   }
 
@@ -101,7 +110,9 @@ var config = {
   onDrop: onDrop,
   onSnapEnd: onSnapEnd
 }
-board = Chessboard('myBoard', config)
+board = Chessboard('myBoard', config);
 $(window).resize(board.resize)
+
+$('#reset-button').on('click', board.start)
 
 updateStatus()
