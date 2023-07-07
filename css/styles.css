@@ -1,19 +1,39 @@
-* {
-    box-sizing: border-box;
-  }
+
+
+html {
+    margin: 0;
+    height: 100%;
+}
 
 body {
-    margin: 20px;
+    margin: auto;
+    height: 100%;
+    
 }
 
 #myBoard {
-    margin: auto;
-    width: 45vw;
+    
+    width: 75%;
+    max-width: 800px;
+
+}
+#myBoard_parent {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-@media screen and (max-height: 920px) {
+/* div.chessboard-63f37 {
+    size: 100%;
+}
+
+div.board-72b1 {
+    size: 100%; */
+
+/* @media screen and (max-height: 920px) {
     #myBoard {
-        width: 90vh;
+        height: 90%;
     }
 }
 
@@ -21,4 +41,4 @@ body {
     #myBoard {
         width: 70vh;
     }
-}
+} */
