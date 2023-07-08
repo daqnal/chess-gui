@@ -127,5 +127,3 @@ myBoard_parent.addEventListener('contextmenu', event => event.preventDefault());
 
 updateStatus()
 let fen = board.fen();
-const x = 1;
-export {x, fen};

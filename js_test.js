@@ -1,5 +1,3 @@
-
-
 var $module = {
-    fen: "1asdasdkajsd"
+    x: 1
 }
