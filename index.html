@@ -7,10 +7,19 @@
     <!-- <link rel="stylesheet" href="./efy/efy.css"> -->
     <link rel="stylesheet" href="./css/chessboard-1.0.0.min.css">
     <link rel="stylesheet" href="./css/styles.css">
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"> -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/brython@3/brython.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/brython@3/brython_stdlib.js"></script>
+
+    
 </head>
 
-<body>
+<body onload="brython()">
+      <script type="text/python" src="test.py"></script>
+      <input id="zone" autocomplete="off">
+      <button id="mybutton">click!</button>
+      
+
       <div id="interface">
             <div id="header-container">
                   <p id="header">
@@ -22,7 +31,7 @@
             </div>
             <!-- <p id="fen"></p> -->
             <div id="button-row">
-                  <button class="button" id="reset-button" role="button">Reset position</button>
+                  <button class="button" id="reset-button" role="button" onclick="location.reload()">Reset position</button>
                   <button class="button" role="button">idk</button>
                   <button class="button" role="button">idk again</button>
             </div>
@@ -39,8 +48,15 @@
       crossorigin="anonymous"></script>
 <script src="./js/game.js" type="module"></script>
 <script src="./js/chess.js" type="module"></script>
-<!-- <script src="./js/script.js"></script> -->
-<!-- <script src="./js/jquery.min.js"></script> -->
-<!-- <script src="./efy/efy.js"></script> -->
+
+
+<script type="text/javascript">
+      var jv_funcs = {
+          openfile:function(iptElement, fileType){
+              // some file opening code then a call back to python
+              open_file(reader.result, fileType);
+          }
+      };
+</script>
 
 </html>

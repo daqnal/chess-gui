@@ -104,7 +104,7 @@ function updateStatus () {
 }
 
 var config = {
-  pieceTheme: '/chess/img/chesspieces/lichess/{piece}.png',
+  pieceTheme: './../img/chesspieces/lichess/{piece}.png',
   draggable: true,
   position: 'start',
   onDragStart: onDragStart,
@@ -114,6 +114,19 @@ var config = {
 board = Chessboard('myBoard', config);
 $(window).resize(board.resize)
 
-$('#reset-button').on('click', board.start)
+myBoard_parent.addEventListener('contextmenu', event => event.preventDefault());
+
+
+// $.ajax({
+//   type: "POST",
+//   url: "/test.py",
+//   data: Text
+// }).done(function( o ) {
+//    console.log("ok")
+// });
+
+var $module = {
+  fen: board.fen()
+}
 
 updateStatus()
