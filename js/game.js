@@ -104,7 +104,7 @@ function updateStatus () {
 }
 
 var config = {
-  pieceTheme: './../img/chesspieces/lichess/{piece}.png',
+  pieceTheme: '/var/www/dgddev/chess/img/chesspieces/lichess/{piece}.png',
   draggable: true,
   position: 'start',
   onDragStart: onDragStart,
