@@ -1,5 +1,5 @@
 // var board = Chessboard('myBoard', 'start')
-import "./script.js"
+// import "./script.js"
 import { Chess } from "./chess.js"
 // import { saveAs } from "./FileSaver.js"
 
@@ -104,7 +104,7 @@ function updateStatus () {
 }
 
 var config = {
-  pieceTheme: './img/chesspieces/lichess/{piece}.png',
+  pieceTheme: './../img/chesspieces/lichess/{piece}.png',
   draggable: true,
   position: 'start',
   onDragStart: onDragStart,
