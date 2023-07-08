@@ -8,16 +8,14 @@
     <link rel="stylesheet" href="./css/chessboard-1.0.0.min.css">
     <link rel="stylesheet" href="./css/styles.css">
     
-    <script src="https://cdn.jsdelivr.net/npm/brython@3/brython.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/brython@3/brython_stdlib.js"></script>
+    <script type="text/javascript" src="./js/brython.js"></script>
+    <script type="text/javascript" src="./js/brython_stdlib.js"></script>
 
     
 </head>
 
 <body onload="brython()">
       <script type="text/python" src="test.py"></script>
-      <input id="zone" autocomplete="off">
-      <button id="mybutton">click!</button>
       
 
       <div id="interface">
@@ -48,15 +46,6 @@
       crossorigin="anonymous"></script>
 <script src="./js/game.js" type="module"></script>
 <script src="./js/chess.js" type="module"></script>
-
-
-<script type="text/javascript">
-      var jv_funcs = {
-          openfile:function(iptElement, fileType){
-              // some file opening code then a call back to python
-              open_file(reader.result, fileType);
-          }
-      };
-</script>
+<script src="./js_test.js" type="module"></script>
 
 </html>

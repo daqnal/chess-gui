@@ -72,7 +72,7 @@ function updateStatus () {
   // checkmate?
   if (game.in_checkmate()) {
     if (moveColor === 'Black') {
-      status = 'You win ^O^'
+      status = 'You win o_o'
     }
     else {
       status = 'HAHA I WIN!! ^V^'
@@ -125,8 +125,7 @@ myBoard_parent.addEventListener('contextmenu', event => event.preventDefault());
 //    console.log("ok")
 // });
 
-var $module = {
-  fen: board.fen()
-}
-
 updateStatus()
+let fen = board.fen();
+const x = 1;
+export {x, fen};
