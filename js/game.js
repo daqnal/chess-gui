@@ -76,7 +76,7 @@ function updateStatus () {
   // checkmate?
   if (game.in_checkmate()) {
     if (moveColor === 'Black') {
-      status = 'You win ^O^'
+      status = 'You win o_o'
     }
     else {
       status = 'HAHA I WIN!! ^V^'
@@ -108,7 +108,7 @@ function updateStatus () {
 }
 
 var config = {
-  pieceTheme: './img/chesspieces/lichess/{piece}.png',
+  pieceTheme: '/chess/img/chesspieces/lichess/{piece}.png',
   draggable: true,
   position: 'start',
   onDragStart: onDragStart,
@@ -122,3 +122,4 @@ $(window).resize(board.resize)
 // myBoard_parent.addEventListener('contextmenu', event => event.preventDefault());
 
 updateStatus()
+let fen = board.fen();
