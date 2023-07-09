@@ -20,16 +20,15 @@ let bQVal = -90;
 let bKVal = -900;
 
 
+export function Logic() {
+    let possibleMoves = game.moves();
 
-// export function Logic() {
-let possibleMoves = game.moves();
 
+    // game over
+    if (possibleMoves.length === 0) return
 
-// game over
-// if (possibleMoves.length === 0) return
+    console.log(possibleMoves);
 
-console.log(possibleMoves);
-
-var botMove = Math.floor(Math.random() * possibleMoves.length);
-    
-export {botMove};
+    var botMove = Math.floor(Math.random() * possibleMoves.length);
+    return botMove;
+}

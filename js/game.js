@@ -1,7 +1,7 @@
 // var board = Chessboard('myBoard', 'start')
 // import "./script.js"
 import { Chess } from "./chess.js"
-import { botMove } from "./bot.js"
+import { Logic } from "./bot.js"
 // import { saveAs } from "./FileSaver.js"
 
 
@@ -28,10 +28,11 @@ function makeRandomMove () {
 
   // game over, ensures that black plays a valid move if in check, leave here
   if (possibleMoves.length === 0) return
+  if (game.in_check === true) return
 
-
-  game.move(possibleMoves[botMove])
+  game.move(possibleMoves[Logic()])
   board.position(game.fen())
+  
 
 
 }
@@ -108,7 +109,7 @@ function updateStatus () {
 }
 
 var config = {
-  pieceTheme: '/chess/img/chesspieces/lichess/{piece}.png',
+  pieceTheme: '/img/chesspieces/lichess/{piece}.png',
   draggable: true,
   position: 'start',
   onDragStart: onDragStart,
