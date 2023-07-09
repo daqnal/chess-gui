@@ -1,6 +1,7 @@
 // var board = Chessboard('myBoard', 'start')
 // import "./script.js"
 import { Chess } from "./chess.js"
+import { botMove } from "./bot.js"
 // import { saveAs } from "./FileSaver.js"
 
 
@@ -22,14 +23,17 @@ function onDragStart (source, piece, position, orientation) {
 }
 
 function makeRandomMove () {
+  // OLD RANDOM MOVE CODE
   var possibleMoves = game.moves()
 
-  // game over
+  // game over, ensures that black plays a valid move if in check, leave here
   if (possibleMoves.length === 0) return
 
-  var randomIdx = Math.floor(Math.random() * possibleMoves.length)
-  game.move(possibleMoves[randomIdx])
+
+  game.move(possibleMoves[botMove])
   board.position(game.fen())
+
+
 }
 
 function onDrop (source, target) {
@@ -104,7 +108,7 @@ function updateStatus () {
 }
 
 var config = {
-  pieceTheme: '/chess/img/chesspieces/lichess/{piece}.png',
+  pieceTheme: './img/chesspieces/lichess/{piece}.png',
   draggable: true,
   position: 'start',
   onDragStart: onDragStart,
@@ -114,6 +118,7 @@ var config = {
 board = Chessboard('myBoard', config);
 $(window).resize(board.resize)
 
-$('#reset-button').on('click', board.start)
+// $('#reset-button').on('click', board.start)
+// myBoard_parent.addEventListener('contextmenu', event => event.preventDefault());
 
 updateStatus()
