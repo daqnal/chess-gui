@@ -108,5 +108,7 @@ board = Chessboard('myBoard', config);
 $(window).resize(board.resize)
 // $('#clearBoardBtn').on('click', board.clear)
 $('#flipOrientationBtn').on('click', board.flip)
+// $('#setStartBtn').on('click', board.start)
+
 
 updateStatus()

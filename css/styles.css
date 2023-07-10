@@ -38,10 +38,6 @@ img.piece-417db {
     cursor: grab;
 }
 
-option {
-    border-radius: 10px;
-}
-
 #fen {
     display: none;
 }
@@ -109,7 +105,7 @@ option {
   height: auto;
   justify-content: center;
   line-height: 1.5;
-  padding: 6px 20px;
+  padding: 6px 0px;
   position: relative;
   margin: 15px 10px 0px 10px;
 
