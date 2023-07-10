@@ -10,6 +10,19 @@ var $status = $('#status')
 var $fen = $('#fen')
 var $pgn = $('#pgn')
 
+let wPVal = 10;
+let wNVal = 30;
+let wBVal = 30;
+let wRVal = 50;
+let wQVal = 90;
+let wKVal = 900;
+let bPVal = -10;
+let bNVal = -30;
+let bBVal = -30;
+let bRVal = -50;
+let bQVal = -90;
+let bKVal = -900;
+
 function onDragStart (source, piece, position, orientation) {
   // do not pick up pieces if the game is over
   if (game.game_over()) return false
@@ -21,16 +34,108 @@ function onDragStart (source, piece, position, orientation) {
   }
 }
 
-function makeRandomMove () {
+function engineMove () {
+
   var possibleMoves = game.moves()
 
   // game over
   if (possibleMoves.length === 0) return
 
-  var randomIdx = Math.floor(Math.random() * possibleMoves.length)
-  game.move(possibleMoves[randomIdx])
-  board.position(game.fen())
+  // check if any of its moves can capture a piece
+  let takeMoves = [];
+  possibleMoves.forEach(checkTakeMoves);
+
+  function checkTakeMoves(item) {
+    // check if its a take
+    if (item.indexOf("x") === 1) {
+      // check if the take leads to a check
+      if (item.slice(-1) === "+") {
+        takeMoves.push({
+          key: item,
+          value: 100
+        })
+        // all other captures (excluding castling)
+      } else if (parseInt(item.slice(-1)) !== NaN) {
+        if (item.indexOf("=") !== -1) {
+          console.log(item.slice(item.indexOf("=")-2, item.indexOf("=")));
+          let pieceType = Object.values(game.get(item.slice(item.indexOf("=")-2, item.indexOf("="))))[0];
+          console.log(pieceType);
+        }
+        // add if, else if, else here
+        // instead of checking if the move is a check above, do it here
+
+        let pieceType = Object.values(game.get(item.slice(-2)))[0];
+        
+        // assign a weight to each piece
+        if (pieceType === "p") {
+          takeMoves.push({
+            key: item,
+            value: 10
+          })
+        } else if (pieceType === "n") {
+          takeMoves.push({
+            key: item,
+            value: 30
+          })
+        } else if (pieceType === "b") {
+          takeMoves.push({
+            key: item,
+            value: 30
+          })
+        } else if (pieceType === "r") {
+          takeMoves.push({
+            key: item,
+            value: 50
+          })
+        } else if (pieceType === "q") {
+          takeMoves.push({
+            key: item,
+            value: 90
+          })
+        }
+      }
+    }
+    
+  }
+  // if there is no move with taking, then play a random move
+  if (takeMoves.length === 0) {
+    var randomIdx = Math.floor(Math.random() * possibleMoves.length);
+
+
+    game.move(possibleMoves[randomIdx]);
+    board.position(game.fen());
+  } else {
+    let largestTake = {
+      key: null,
+      value: 0
+    };
+
+    // console.log(takeMoves);
+    takeMoves.forEach(findLargestTake);
+
+    function findLargestTake(value) {
+      // console.log(Object.values(value)[1])
+      if (Object.values(value)[1] > Object.values(largestTake)[1]) {
+        largestTake = value;
+      }
+    }
+
+    let idxOfLargestTake = possibleMoves.indexOf(Object.values(largestTake)[0]);
+    
+    console.log(possibleMoves);
+    console.log(idxOfLargestTake);
+    game.move(possibleMoves[idxOfLargestTake]);
+    board.position(game.fen());
+    
+  }
+  
+
+  
+  
+  
+
 }
+
 
 function onDrop (source, target) {
   // see if the move is legal
@@ -44,16 +149,14 @@ function onDrop (source, target) {
   if (move === null) return 'snapback'
 
   // make random legal move for black
-  window.setTimeout(makeRandomMove, 250)
+  window.setTimeout(engineMove, 250)
 
   updateStatus()
 
   // MY LINES OF CODE SO PROBABLY BREAKS
   console.log(board.fen());
-  // fen.innerHTML = board.fen()
-  // let fen = board.fen();
 
-} // <--- LEAVE THIS ALONE
+}
 
 // update the board position after the piece snap
 // for castling, en passant, pawn promotion
@@ -114,16 +217,7 @@ var config = {
 board = Chessboard('myBoard', config);
 $(window).resize(board.resize)
 
-myBoard_parent.addEventListener('contextmenu', event => event.preventDefault());
-
-
-// $.ajax({
-//   type: "POST",
-//   url: "/test.py",
-//   data: Text
-// }).done(function( o ) {
-//    console.log("ok")
-// });
+// $('#reset-button').on('click', board.start)
+// myBoard_parent.addEventListener('contextmenu', event => event.preventDefault());
 
 updateStatus()
-let fen = board.fen();
