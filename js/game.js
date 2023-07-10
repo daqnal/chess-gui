@@ -42,6 +42,8 @@ function engineMove () {
   if (possibleMoves.length === 0) return
 
   // check if any of its moves can capture a piece
+  let pieceType = null;
+  let addedValue = 0;
   let takeMoves = [];
   possibleMoves.forEach(checkTakeMoves);
 
@@ -49,51 +51,52 @@ function engineMove () {
     // check if its a take
     if (item.indexOf("x") === 1) {
       // check if the take leads to a check
-      if (item.slice(-1) === "+") {
+      if (item.slice(-1) === "+" && item.indexOf("=") === -1) {
+        console.log(item.slice(-3, -1));
+        pieceType = Object.values(game.get(item.slice(-3, -1)))[0];
+        addedValue = 10;
+      } else if (item.indexOf("=") !== -1) {
+        
+        pieceType = Object.values(game.get(item.slice(item.indexOf("=")-2, item.indexOf("="))))[0];
+        addedValue = 90;
+      } else {
+        console.log(item.slice(-2));
+        pieceType = Object.values(game.get(item.slice(-2)))[0];
+      }
+
+      // add if, else if, else here
+      // instead of checking if the move is a check above, do it here
+      
+      // assign a weight to each piece
+      if (pieceType === "p") {
         takeMoves.push({
           key: item,
-          value: 100
+          value: 10 + addedValue
         })
-        // all other captures (excluding castling)
-      } else if (parseInt(item.slice(-1)) !== NaN) {
-        if (item.indexOf("=") !== -1) {
-          console.log(item.slice(item.indexOf("=")-2, item.indexOf("=")));
-          let pieceType = Object.values(game.get(item.slice(item.indexOf("=")-2, item.indexOf("="))))[0];
-          console.log(pieceType);
-        }
-        // add if, else if, else here
-        // instead of checking if the move is a check above, do it here
-
-        let pieceType = Object.values(game.get(item.slice(-2)))[0];
-        
-        // assign a weight to each piece
-        if (pieceType === "p") {
-          takeMoves.push({
-            key: item,
-            value: 10
-          })
-        } else if (pieceType === "n") {
-          takeMoves.push({
-            key: item,
-            value: 30
-          })
-        } else if (pieceType === "b") {
-          takeMoves.push({
-            key: item,
-            value: 30
-          })
-        } else if (pieceType === "r") {
-          takeMoves.push({
-            key: item,
-            value: 50
-          })
-        } else if (pieceType === "q") {
-          takeMoves.push({
-            key: item,
-            value: 90
-          })
-        }
+      } else if (pieceType === "n") {
+        takeMoves.push({
+          key: item,
+          value: 30 + addedValue
+        })
+      } else if (pieceType === "b") {
+        takeMoves.push({
+          key: item,
+          value: 30 + addedValue
+        })
+      } else if (pieceType === "r") {
+        takeMoves.push({
+          key: item,
+          value: 50 + addedValue
+        })
+      } else if (pieceType === "q") {
+        takeMoves.push({
+          key: item,
+          value: 90 + addedValue
+        })
       }
+
+      console.log(takeMoves);
+      
     }
     
   }
@@ -207,7 +210,7 @@ function updateStatus () {
 }
 
 var config = {
-  pieceTheme: './../img/chesspieces/lichess/{piece}.png',
+  pieceTheme: '/chess/img/chesspieces/lichess/{piece}.png',
   draggable: true,
   position: 'start',
   onDragStart: onDragStart,
