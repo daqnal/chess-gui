@@ -94,8 +94,6 @@ function engineMove () {
           value: 90 + addedValue
         })
       }
-
-      console.log(takeMoves);
       
     }
     
@@ -125,8 +123,6 @@ function engineMove () {
 
     let idxOfLargestTake = possibleMoves.indexOf(Object.values(largestTake)[0]);
     
-    console.log(possibleMoves);
-    console.log(idxOfLargestTake);
     game.move(possibleMoves[idxOfLargestTake]);
     board.position(game.fen());
     
@@ -210,7 +206,7 @@ function updateStatus () {
 }
 
 var config = {
-  pieceTheme: '/chess/img/chesspieces/lichess/{piece}.png',
+  pieceTheme: '/img/chesspieces/lichess/{piece}.png',
   draggable: true,
   position: 'start',
   onDragStart: onDragStart,
