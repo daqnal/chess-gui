@@ -213,10 +213,10 @@ var config = {
   onDrop: onDrop,
   onSnapEnd: onSnapEnd
 }
+
 board = Chessboard('myBoard', config);
 $(window).resize(board.resize)
-
-// $('#reset-button').on('click', board.start)
-// myBoard_parent.addEventListener('contextmenu', event => event.preventDefault());
+$('#clearBoardBtn').on('click', board.clear)
+$('#flipOrientationBtn').on('click', board.flip)
 
 updateStatus()
