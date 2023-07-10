@@ -1,7 +1,6 @@
 // var board = Chessboard('myBoard', 'start')
 // import "./script.js"
 import { Chess } from "./chess.js"
-import { Logic } from "./bot.js"
 // import { saveAs } from "./FileSaver.js"
 
 
