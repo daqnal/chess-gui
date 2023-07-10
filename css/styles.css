@@ -38,6 +38,10 @@ img.piece-417db {
     cursor: grab;
 }
 
+option {
+    border-radius: 10px;
+}
+
 #fen {
     display: none;
 }
@@ -87,6 +91,39 @@ img.piece-417db {
     text-align: center;
 }
 
+#engineType {
+    align-items: center;
+  /* appearance: none; */
+  background-color: #3EB2FD;
+  background-image: linear-gradient(1deg, #4F58FD, #149BF3 99%);
+  background-size: calc(100% + 20px) calc(100% + 20px);
+  border-radius: 100px;
+  border-width: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: flex;
+  font-size: 1rem;
+  width: 200px;
+  height: auto;
+  justify-content: center;
+  line-height: 1.5;
+  padding: 6px 20px;
+  position: relative;
+  margin: 15px 10px 0px 10px;
+
+  font-family: SpaceMono;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .2s,background-position .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
 .white-1e1d7{
     background-color:#b0b9b4;
 }
@@ -94,6 +131,7 @@ img.piece-417db {
 .black-3c85d{
     background-color:#558498;
 }
+
 
 .button {
   align-items: center;

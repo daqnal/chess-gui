@@ -21,8 +21,15 @@
             <!-- <p id="fen"></p> -->
             <div id="button-row">
                   <button class="button" id="reset-button" role="button" onclick="location.reload()">Starting position</button>
-                  <button class="button" id="clearBoardBtn" role="button">Clear board</button>
+                  <!-- <button class="button" id="clearBoardBtn" role="button">Clear board</button> -->
                   <button class="button" id="flipOrientationBtn" role="button">Flip board</button>
+            
+                  <select name="engineType" id="engineType">
+                        <option disabled hidden selected>Difficulty</option>
+                        <option value="easy">EZ</option>
+                        <option value="medium">med</option>
+                        <option value="hard">stockfish</option>
+                  </select>
             </div>
       </div>
       
