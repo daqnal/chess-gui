@@ -99,3 +99,12 @@ export function easyMode(game, board) {
         
     }
 }
+
+export function mediumMode(game, board) {
+    return 0
+}
+
+
+export function hardMode(game, board) {
+    return 0
+}

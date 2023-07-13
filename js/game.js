@@ -1,6 +1,6 @@
 
 import { Chess } from "./chess.js"
-import { easyMode, evalPosition } from "./bot.js"
+import { easyMode, mediumMode, hardMode, evalPosition } from "./bot.js"
 
 
 var board = null
@@ -21,8 +21,17 @@ function onDragStart (source, piece, position, orientation) {
 }
 
 function engineMove () {
+  var difficulty = document.getElementById("engineType").options.selectedIndex
 
-  easyMode(game, board)
+  if (difficulty === 1) {
+    easyMode(game, board) 
+  } else if (difficulty === 2) {
+    mediumMode(game, board)
+  } else if (difficulty === 3) {
+    hardMode(game, board)
+  } else {
+    mediumMode(game, board)
+  }
 }
 
 

@@ -6,7 +6,6 @@
     <title>Chess</title>
     <link rel="stylesheet" href="./css/chessboard-1.0.0.min.css">
     <link rel="stylesheet" href="./css/styles.css">
-    <link rel="icon" href="/img/fish.svg">
 </head>
 <body>
       <div id="interface">
@@ -26,9 +25,9 @@
             
                   <select name="engineType" id="engineType">
                         <option disabled hidden selected>Difficulty</option>
-                        <option value="easy">Easy</option>
-                        <option value="medium">Medium</option>
-                        <option value="hard">Hard</option>
+                        <option id="easy" value="easy">Easy</option>
+                        <option id="medium" value="medium">Medium</option>
+                        <option id="hard" value="hard">Hard</option>
                   </select>
             </div>
       </div>
@@ -44,5 +43,4 @@
       crossorigin="anonymous"></script>
 <script src="./js/game.js" type="module"></script>
 <script src="./js/chess.js" type="module"></script>
-
 </html>
