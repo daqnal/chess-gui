@@ -2,6 +2,7 @@ import { Chess } from "./chess.js"
 
 
 export function evalPosition(game, board) {
+    
     // first, evaluate material
 
     const position = board.position();
@@ -36,6 +37,8 @@ export function evalPosition(game, board) {
     }
 
     console.log(netMaterial);
+
+    let score = (netMaterial);
 }
 
 export function easyMode(game, board) {
