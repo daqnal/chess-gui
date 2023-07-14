@@ -1,8 +1,41 @@
 import { Chess } from "./chess.js"
 
 
-export function evalPosition() {
-    return 0
+export function evalPosition(game, board) {
+    // first, evaluate material
+
+    const position = board.position();
+    let netMaterial = 0;
+
+    for (const [key, value] of Object.entries(position)) {
+        if (value[0] === "w") {
+            if (value[1] === "P") {
+                netMaterial += 1;
+            } else if (value[1] === "N") {
+                netMaterial += 3;
+            } else if (value[1] === "B") {
+                netMaterial += 3;
+            } else if (value[1] === "R") {
+                netMaterial += 5;
+            } else if (value[1] === "Q") {
+                netMaterial += 9;
+            }
+        } else if (value[0] === "b") {
+            if (value[1] === "P") {
+                netMaterial += -1;
+            } else if (value[1] === "N") {
+                netMaterial += -3;
+            } else if (value[1] === "B") {
+                netMaterial += -3;
+            } else if (value[1] === "R") {
+                netMaterial += -5;
+            } else if (value[1] === "Q") {
+                netMaterial += -9;
+            }
+        }
+    }
+
+    console.log(netMaterial);
 }
 
 export function easyMode(game, board) {
@@ -18,6 +51,8 @@ export function easyMode(game, board) {
     let addedValue = 0;
     let takeMoves = [];
 
+    evalPosition(game, board);
+
     
     possibleMoves.forEach(checkTakeMoves);
 
@@ -26,7 +61,6 @@ export function easyMode(game, board) {
         if (item.indexOf("x") === 1) {
         // check if the take leads to a check
         if (item.slice(-1) === "+" && item.indexOf("=") === -1) {
-            console.log(item.slice(-3, -1));
             pieceType = Object.values(game.get(item.slice(-3, -1)))[0];
             addedValue = 10;
         } else if (item.indexOf("=") !== -1) {
@@ -34,7 +68,6 @@ export function easyMode(game, board) {
             pieceType = Object.values(game.get(item.slice(item.indexOf("=")-2, item.indexOf("="))))[0];
             addedValue = 90;
         } else {
-            console.log(item.slice(-2));
             pieceType = Object.values(game.get(item.slice(-2)))[0];
         }
         
